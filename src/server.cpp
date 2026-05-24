@@ -272,7 +272,7 @@ namespace KRL {
         }
 
         json getFromJson() override {
-            if (ifstream routesJson("routes.json"); routesJson.is_open()) {
+            if (ifstream routesJson("../routes.json"); routesJson.is_open()) {
                 stringstream buff;
                 routesJson >> buff.rdbuf();
                 routesJson.close();
@@ -291,7 +291,7 @@ namespace KRL {
             else
                 routes = { { line, route } };
 
-            if (ofstream routesJson("routes.json"); routesJson.is_open()) {
+            if (ofstream routesJson("../routes.json"); routesJson.is_open()) {
                 routesJson << routes.dump(2);
                 routesJson.close();
             }
@@ -363,7 +363,7 @@ class Station : public Saveable {
             }
         }
         json getFromJson() override {
-            ifstream in("stations.json");
+            ifstream in("../stations.json");
             if (in.is_open()) {
                 stringstream stationsFile;
                 in >> stationsFile.rdbuf();
@@ -466,7 +466,7 @@ class NormalStation : public Station {
                 {"transit", false}
             };
 
-            ofstream out("stations.json");
+            ofstream out("../stations.json");
             if (out.is_open()) {
                 out << stationsJson.dump(2);
                 out.close();
@@ -525,7 +525,7 @@ class TransitStation : public Station {
                 {"transit", true}
             };
 
-            ofstream out("stations.json");
+            ofstream out("../stations.json");
             if (out.is_open()) {
                 out << stationsJson.dump(2);
                 out.close();
@@ -580,7 +580,7 @@ vector<pair<unique_ptr<Station>, int>> Train::getStops(bool onlyTransit) {
 }
 
 unique_ptr<Station> determineStationType(string id) {
-    if (ifstream stationsJson("stations.json"); stationsJson.is_open()) {
+    if (ifstream stationsJson("../stations.json"); stationsJson.is_open()) {
         stringstream buff;
         stationsJson >> buff.rdbuf();
         json stations = json::parse(buff.str());
@@ -657,7 +657,7 @@ vector<tuple<string, int, int>> schedule(string fromID, string toID, string from
 }
 
 unordered_map<string, string> getStations() {
-    if (ifstream i("stations.json"); i.is_open()) {
+    if (ifstream i("../stations.json"); i.is_open()) {
         stringstream buff;
         i >> buff.rdbuf();
         i.close();
@@ -684,8 +684,8 @@ unordered_map<string, string> getStations() {
             if (station["fg_enable"].get<int>())
                 names[station["sta_id"].get<string>()] = station["sta_name"].get<string>();
 
-        if (ifstream i("stations.json"); !i.is_open()) {
-            ofstream o("stations.json");
+        if (ifstream i("../stations.json"); !i.is_open()) {
+            ofstream o("../stations.json");
             json stations;
             for (auto& [id, name] : names)
                 stations[id] = { {"name", name} };
