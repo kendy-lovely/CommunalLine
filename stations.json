@@ -1,0 +1,340 @@
+{
+  "AC": {
+    "line": "TANJUNGPRIUK",
+    "name": "ANCOL",
+    "transit": false
+  },
+  "AK": {
+    "line": "CIKARANG",
+    "name": "ANGKE",
+    "transit": false
+  },
+  "BJD": {
+    "line": "BOGOR",
+    "name": "BOJONGGEDE",
+    "transit": false
+  },
+  "BKS": {
+    "line": "CIKARANG",
+    "name": "BEKASI",
+    "transit": false
+  },
+  "BKST": {
+    "line": "CIKARANG",
+    "name": "BEKASI TIMUR",
+    "transit": false
+  },
+  "BOO": {
+    "line": "BOGOR",
+    "name": "BOGOR",
+    "transit": false
+  },
+  "BUA": {
+    "line": "CIKARANG",
+    "name": "BUARAN",
+    "transit": false
+  },
+  "CBN": {
+    "line": "BOGOR",
+    "name": "CIBINONG",
+    "transit": false
+  },
+  "CC": {
+    "line": "RANGKASBITUNG",
+    "name": "CICAYUR",
+    "transit": false
+  },
+  "CIT": {
+    "line": "CIKARANG",
+    "name": "CIBITUNG",
+    "transit": false
+  },
+  "CJT": {
+    "line": "RANGKASBITUNG",
+    "name": "CILEJIT",
+    "transit": false
+  },
+  "CKI": {
+    "line": "BOGOR",
+    "name": "CIKINI",
+    "transit": false
+  },
+  "CKR": {
+    "line": "CIKARANG",
+    "name": "CIKARANG",
+    "transit": false
+  },
+  "CLT": {
+    "line": "BOGOR",
+    "name": "CILEBUT",
+    "transit": false
+  },
+  "CSK": {
+    "line": "RANGKASBITUNG",
+    "name": "CISAUK",
+    "transit": false
+  },
+  "CTA": {
+    "line": "BOGOR",
+    "name": "CITAYAM",
+    "transit": false
+  },
+  "CUK": {
+    "line": "CIKARANG",
+    "name": "CAKUNG",
+    "transit": false
+  },
+  "CW": {
+    "line": "BOGOR",
+    "name": "CAWANG",
+    "transit": false
+  },
+  "DAR": {
+    "line": "RANGKASBITUNG",
+    "name": "DARU",
+    "transit": false
+  },
+  "DP": {
+    "line": "BOGOR",
+    "name": "DEPOK",
+    "transit": false
+  },
+  "DPB": {
+    "line": "BOGOR",
+    "name": "DEPOK BARU",
+    "transit": false
+  },
+  "DRN": {
+    "line": "BOGOR",
+    "name": "DUREN KALIBATA",
+    "transit": false
+  },
+  "DU": {
+    "lines": [
+      "CIKARANG",
+      "TANGERANG"
+    ],
+    "name": "DURI",
+    "transit": true
+  },
+  "GDD": {
+    "line": "BOGOR",
+    "name": "GONDANGDIA",
+    "transit": false
+  },
+  "JAKK": {
+    "lines": [
+      "TANJUNGPRIUK",
+      "BOGOR"
+    ],
+    "name": "JAKARTA KOTA",
+    "transit": true
+  },
+  "JAY": {
+    "line": "BOGOR",
+    "name": "JAYAKARTA",
+    "transit": false
+  },
+  "JMU": {
+    "line": "RANGKASBITUNG",
+    "name": "JURANG MANGU",
+    "transit": false
+  },
+  "JNG": {
+    "line": "CIKARANG",
+    "name": "JATINEGARA",
+    "transit": false
+  },
+  "JTK": {
+    "line": "RANGKASBITUNG",
+    "name": "JATAKE",
+    "transit": false
+  },
+  "JUA": {
+    "line": "BOGOR",
+    "name": "JUANDA",
+    "transit": false
+  },
+  "KAT": {
+    "line": "CIKARANG",
+    "name": "KARET",
+    "transit": false
+  },
+  "KBY": {
+    "line": "RANGKASBITUNG",
+    "name": "KEBAYORAN",
+    "transit": false
+  },
+  "KLD": {
+    "line": "CIKARANG",
+    "name": "KLENDER",
+    "transit": false
+  },
+  "KLDB": {
+    "line": "CIKARANG",
+    "name": "KLENDER BARU",
+    "transit": false
+  },
+  "KPB": {
+    "lines": [
+      "CIKARANG",
+      "TANJUNGPRIUK"
+    ],
+    "name": "KAMPUNG BANDAN",
+    "transit": true
+  },
+  "KRI": {
+    "line": "CIKARANG",
+    "name": "KRANJI",
+    "transit": false
+  },
+  "LNA": {
+    "line": "BOGOR",
+    "name": "LENTENG AGUNG",
+    "transit": false
+  },
+  "MGB": {
+    "line": "BOGOR",
+    "name": "MANGGA BESAR",
+    "transit": false
+  },
+  "MRI": {
+    "lines": [
+      "BOGOR",
+      "CIKARANG"
+    ],
+    "name": "MANGGARAI",
+    "transit": true
+  },
+  "MTR": {
+    "line": "CIKARANG",
+    "name": "MATRAMAN",
+    "transit": false
+  },
+  "NMO": {
+    "line": "BOGOR",
+    "name": "NAMBO",
+    "transit": false
+  },
+  "PDJ": {
+    "line": "RANGKASBITUNG",
+    "name": "PONDOK RANJI",
+    "transit": false
+  },
+  "PDRG": {
+    "line": "BOGOR",
+    "name": "PONDOK RAJEG",
+    "transit": false
+  },
+  "PLM": {
+    "line": "RANGKASBITUNG",
+    "name": "PALMERAH",
+    "transit": false
+  },
+  "POC": {
+    "line": "BOGOR",
+    "name": "PONDOK CINA",
+    "transit": false
+  },
+  "PRP": {
+    "line": "RANGKASBITUNG",
+    "name": "PARUNG PANJANG",
+    "transit": false
+  },
+  "PSM": {
+    "line": "BOGOR",
+    "name": "PASAR MINGGU",
+    "transit": false
+  },
+  "PSMB": {
+    "line": "BOGOR",
+    "name": "PASAR MINGGU BARU",
+    "transit": false
+  },
+  "RU": {
+    "line": "RANGKASBITUNG",
+    "name": "RAWA BUNTU",
+    "transit": false
+  },
+  "SDM": {
+    "line": "RANGKASBITUNG",
+    "name": "SUDIMARA",
+    "transit": false
+  },
+  "SRP": {
+    "line": "RANGKASBITUNG",
+    "name": "SERPONG",
+    "transit": false
+  },
+  "SUD": {
+    "line": "CIKARANG",
+    "name": "SUDIRMAN",
+    "transit": false
+  },
+  "SUDB": {
+    "lines": [
+      "CIKARANG",
+      "CGK"
+    ],
+    "name": "SUDIRMAN BARU",
+    "transit": true
+  },
+  "SW": {
+    "line": "BOGOR",
+    "name": "SAWAH BESAR",
+    "transit": false
+  },
+  "TB": {
+    "line": "CIKARANG",
+    "name": "TAMBUN",
+    "transit": false
+  },
+  "TEB": {
+    "line": "BOGOR",
+    "name": "TEBET",
+    "transit": false
+  },
+  "TEJ": {
+    "line": "RANGKASBITUNG",
+    "name": "TENJO",
+    "transit": false
+  },
+  "TGS": {
+    "line": "RANGKASBITUNG",
+    "name": "TIGARAKSA",
+    "transit": false
+  },
+  "THB": {
+    "lines": [
+      "RANGKASBITUNG",
+      "CIKARANG"
+    ],
+    "name": "TANAH ABANG",
+    "transit": true
+  },
+  "TLM": {
+    "line": "CIKARANG",
+    "name": "METLAND TELAGAMURNI",
+    "transit": false
+  },
+  "TNT": {
+    "line": "BOGOR",
+    "name": "TANJUNG BARAT",
+    "transit": false
+  },
+  "TPK": {
+    "line": "TANJUNGPRIUK",
+    "name": "TANJUNG PRIOK",
+    "transit": false
+  },
+  "UI": {
+    "line": "BOGOR",
+    "name": "UNIV. INDONESIA",
+    "transit": false
+  },
+  "UP": {
+    "line": "BOGOR",
+    "name": "UNIV. PANCASILA",
+    "transit": false
+  }
+}
