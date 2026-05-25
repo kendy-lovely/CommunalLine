@@ -176,15 +176,15 @@ namespace KRL {
             return (to < between && between < from) || (from < between && between < to);
         }
 
-        void extend(const vector<string>& queried) {
-            if (route.size() < 2) route = queried;
+        void extend(const vector<string>& queried, bool reverse = false) {
+            if (route.size() < 2) { route = queried; saveToJson(); return; }
             int queriedSize = queried.size();
             
             for (int j = 0; j < queriedSize; j++) {
                 if (queried[j] == route[0]) {
-                    if ((queriedSize > j+1 && queried[j+1] != route[1]) || (j-1 >= 0 && queried[j-1] == route[1])) {
+                    if (!reverse && ((queriedSize > j+1 && queried[j+1] != route[1]) || (j-1 >= 0 && queried[j-1] == route[1]))) {
                         vector<string> reversed(queried.rbegin(), queried.rend());
-                        extend(reversed);
+                        extend(reversed, true);
                         return;
                     }
                     for (int k = j-1; k >= 0; k--)
@@ -192,9 +192,9 @@ namespace KRL {
                     saveToJson();
                 }
                 if (queried[j] == *route.rbegin()) {
-                    if ((j-1 >= 0 && queried[j-1] != *next(route.rbegin())) || (queriedSize > j+1 && queried[j+1] == *next(route.rbegin()))) {
+                    if (!reverse && ((j-1 >= 0 && queried[j-1] != *next(route.rbegin())) || (queriedSize > j+1 && queried[j+1] == *next(route.rbegin())))) {
                         vector<string> reversed(queried.rbegin(), queried.rend());
-                        extend(reversed);
+                        extend(reversed, true);
                         return;
                     }
                     for (int k = j+1; k < queriedSize; k++)
@@ -272,7 +272,7 @@ namespace KRL {
         }
 
         json getFromJson() override {
-            if (ifstream routesJson("../routes.json"); routesJson.is_open()) {
+            if (ifstream routesJson("build/routes.json"); routesJson.is_open()) {
                 stringstream buff;
                 routesJson >> buff.rdbuf();
                 routesJson.close();
@@ -284,26 +284,25 @@ namespace KRL {
 
         void saveToJson() override {
             string lineStr = lineToString(line);
-            json routes = getFromJson();
+            json routesJson = getFromJson();
 
-            if (!routes.is_null() && routes.contains(lineStr))
-                routes[lineStr] = route;
-            else
-                routes = { { line, route } };
+            if (routesJson.is_null()) routesJson = json::object();
+                routesJson[lineStr] = route;
 
-            if (ofstream routesJson("../routes.json"); routesJson.is_open()) {
-                routesJson << routes.dump(2);
-                routesJson.close();
+            if (ofstream j("build/routes.json"); j.is_open()) {
+                j << routesJson.dump(2);
+                j.close();
             }
         }
     };
 
-    static array<unique_ptr<Route>, 5> routes {
+    static array<unique_ptr<Route>, 6> routes {
         make_unique<Route>(BOGOR), // BOGOR
         make_unique<Route>(CIKARANG), // CIKARANG
         make_unique<Route>(RANGKASBITUNG), // RANGKASBITUNG
         make_unique<Route>(TANJUNGPRIUK), // TANJUNGPRIUK
-        make_unique<Route>(TANGERANG)  // TANGERANG
+        make_unique<Route>(TANGERANG), // TANGERANG
+        make_unique<Route>(CGK)
     };
 }
 
@@ -363,7 +362,7 @@ class Station : public Saveable {
             }
         }
         json getFromJson() override {
-            ifstream in("../stations.json");
+            ifstream in("build/stations.json");
             if (in.is_open()) {
                 stringstream stationsFile;
                 in >> stationsFile.rdbuf();
@@ -392,6 +391,7 @@ class Station : public Saveable {
                 for (auto& train : trainsJson) {
                     string lineStr = train["ka_name"].get<string>();
                     lineStr = lineStr.substr(lineStr.rfind(' ') + 1);
+                    
                     trains.emplace_back(
                         train["train_id"].get<string>(), 
                         KRL::strToLine(lineStr), 
@@ -431,7 +431,7 @@ class NormalStation : public Station {
                 }
             }
 
-            line = getTrains(420, 480)[0].getLine();
+            line = getTrains(420, 540)[0].getLine();
 
             return;
         };
@@ -466,7 +466,7 @@ class NormalStation : public Station {
                 {"transit", false}
             };
 
-            ofstream out("../stations.json");
+            ofstream out("build/stations.json");
             if (out.is_open()) {
                 out << stationsJson.dump(2);
                 out.close();
@@ -489,7 +489,7 @@ class TransitStation : public Station {
                 }
             }
 
-            for (auto& train : getTrains(420, 480))
+            for (auto& train : getTrains(420, 540))
                 lines.insert(train.getLine());
 
             return;
@@ -525,7 +525,7 @@ class TransitStation : public Station {
                 {"transit", true}
             };
 
-            ofstream out("../stations.json");
+            ofstream out("build/stations.json");
             if (out.is_open()) {
                 out << stationsJson.dump(2);
                 out.close();
@@ -580,7 +580,7 @@ vector<pair<unique_ptr<Station>, int>> Train::getStops(bool onlyTransit) {
 }
 
 unique_ptr<Station> determineStationType(string id) {
-    if (ifstream stationsJson("../stations.json"); stationsJson.is_open()) {
+    if (ifstream stationsJson("build/stations.json"); stationsJson.is_open()) {
         stringstream buff;
         stationsJson >> buff.rdbuf();
         json stations = json::parse(buff.str());
@@ -627,23 +627,44 @@ int Train::timeAt(string id) {
 vector<tuple<string, int, int>> schedule(string fromID, string toID, int from, int to) {
     vector<tuple<string, int, int>> schedule;
     auto src = determineStationType(fromID);
-    auto dest = determineStationType(toID);
+    if (!src) { cerr << "Error: could not determine station type for " << fromID << endl; return {}; }
+    cerr << "src: " << src->getName() << endl;
 
-    for (auto& train : src->getTrains(from, to)) {
+    auto dest = determineStationType(toID);
+    if (!dest) { cerr << "Error: could not determine station type for " << toID << endl; return {}; }
+    cerr << "dest: " << dest->getName() << endl;
+
+    auto trains = src->getTrains(from, to);
+    cerr << "trains count: " << trains.size() << endl;
+
+    for (auto& train : trains) {
+        cerr << "processing train: " << train.getId() << " line: " << KRL::lineToString(train.getLine()) << " route: " << train.getRoute() << endl;
+
+        if (train.getLine() >= KRL::routes.size()) {
+            cerr << "Warning: line out of bounds for train " << train.getId() << endl;
+            continue;
+        }
+
+        cerr << "checking route..." << endl;
         KRL::Route::Validation valid = KRL::routes[train.getLine()]->check(train.getRoute(), src->getName(), dest->getName());
+        cerr << "valid: " << KRL::Route::validationToString(valid) << endl;
 
         if (valid == KRL::Route::INVALID) continue;
 
+        cerr << "getting stops..." << endl;
         vector<string> route;
         int timeFrom = -1, timeTo = -1;
 
         for (auto& stop : train.getStops()) {
+            cerr << "stop: " << stop.first->getName() << endl;
             route.push_back(stop.first->getName());
             if (stop.first->getId() == src->getId()) timeFrom = stop.second;
             if (stop.first->getId() == dest->getId()) timeTo = stop.second;
         }
 
+        cerr << "extending route..." << endl;
         KRL::routes[train.getLine()]->extend(route);
+        cerr << "done extending" << endl;
 
         if (timeFrom != -1 && timeTo != -1 && timeFrom < timeTo) 
             schedule.emplace_back(train.getId(), timeFrom, timeTo);
@@ -657,7 +678,7 @@ vector<tuple<string, int, int>> schedule(string fromID, string toID, string from
 }
 
 unordered_map<string, string> getStations() {
-    if (ifstream i("../stations.json"); i.is_open()) {
+    if (ifstream i("build/stations.json"); i.is_open()) {
         stringstream buff;
         i >> buff.rdbuf();
         i.close();
@@ -684,8 +705,8 @@ unordered_map<string, string> getStations() {
             if (station["fg_enable"].get<int>())
                 names[station["sta_id"].get<string>()] = station["sta_name"].get<string>();
 
-        if (ifstream i("../stations.json"); !i.is_open()) {
-            ofstream o("../stations.json");
+        if (ifstream i("build/stations.json"); !i.is_open()) {
+            ofstream o("build/stations.json");
             json stations;
             for (auto& [id, name] : names)
                 stations[id] = { {"name", name} };
@@ -704,7 +725,7 @@ void sendJson(Response& res, const json& body, int status = 200) {
     res.set_header("Content-Type", "application/json");
     res.set_header("Access-Control-Allow-Origin", "*");
     res.status = status;
-    res.body   = body.dump(2);
+    res.body   = body.dump(2) ;
 }
  
 void sendError(Response& res, const string& msg, int status = 400) {
@@ -827,12 +848,12 @@ int main() {
         }
     });
  
-    cout << "KRL API server running on http://0.0.0.0:8080" << endl;
-    cout << "Endpoints:" << endl;
-    cout << "  GET /stations" << endl;
-    cout << "  GET /stops/:trainId?onlyTransit=true" << endl;
-    cout << "  GET /trains/:stationId?from=HH:MM&to=HH:MM" << endl;
-    cout << "  GET /schedule?from=ID&to=ID&timeFrom=HH:MM&timeTo=HH:MM" << endl;
+    cout << "KRL API server running on http://0.0.0.0:8080" << endl
+         << "Endpoints:" << endl
+         << "  GET /stations" << endl
+         << "  GET /stops/:trainId?onlyTransit=true" << endl
+         << "  GET /trains/:stationId?from=HH:MM&to=HH:MM" << endl
+         << "  GET /schedule?from=ID&to=ID&timeFrom=HH:MM&timeTo=HH:MM" << endl;
  
     svr.listen("0.0.0.0", 8080);
     return 0;
