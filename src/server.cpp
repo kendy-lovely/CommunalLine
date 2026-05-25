@@ -301,13 +301,13 @@ namespace KRL {
         }
     };
 
-    static array<Route, 6> routes {
-        Route(BOGOR),
-        Route(CIKARANG),
-        Route(RANGKASBITUNG),
-        Route(TANJUNGPRIUK),
-        Route(TANGERANG),
-        Route(CGK)
+    static array<unique_ptr<Route>, 6> routes {
+        make_unique<Route>(BOGOR),
+        make_unique<Route>(CIKARANG),
+        make_unique<Route>(RANGKASBITUNG),
+        make_unique<Route>(TANJUNGPRIUK),
+        make_unique<Route>(TANGERANG),
+        make_unique<Route>(CGK)
     };
 }
 
@@ -650,7 +650,7 @@ vector<tuple<string, int, int>> schedule(string fromID, string toID, int from, i
         }
 
         cerr << "checking route..." << endl;
-        KRL::Route::Validation valid = KRL::routes[train.getLine()].check(train.getRoute(), src->getName(), dest->getName());
+        KRL::Route::Validation valid = KRL::routes[train.getLine()]->check(train.getRoute(), src->getName(), dest->getName());
         cerr << "valid: " << KRL::Route::validationToString(valid) << endl;
 
         if (valid == KRL::Route::INVALID) continue;
@@ -667,7 +667,7 @@ vector<tuple<string, int, int>> schedule(string fromID, string toID, int from, i
         }
 
         cerr << "extending route..." << endl;
-        KRL::routes[train.getLine()].extend(route);
+        KRL::routes[train.getLine()]->extend(route);
         cerr << "done extending" << endl;
 
         if (timeFrom != -1 && timeTo != -1 && timeFrom < timeTo) 
