@@ -95,7 +95,7 @@ const std::string WEB_LAYOUT = R"html(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚂 KRL Dashboard</title>
+    <title>KRL Tracker</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
         body { background: #f4f4f4; padding: 20px; color: #333; }
@@ -129,8 +129,8 @@ const std::string WEB_LAYOUT = R"html(
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚂 KRL Dashboard</h1>
-            <p>Train Schedule Tracker</p>
+            <h1>KRL Tracker</h1>
+            <p>Sistem Pelacakan Jadwal Commuter Line</p>
         </div>
         
         <div class="form-section">
@@ -148,7 +148,7 @@ const std::string WEB_LAYOUT = R"html(
                     <input type="number" id="tf" min="0" max="23" value="7">
                 </div>
                 <div class="form-group">
-                    <label>Sampai Jam (0-23)</label>
+                    <label>Hingga Jam (0-23)</label>
                     <input type="number" id="tt" min="0" max="23" value="9">
                 </div>
             </div>
@@ -192,7 +192,7 @@ const std::string WEB_LAYOUT = R"html(
             let tt = document.getElementById('tt').value;
             
             if (!f || !t) {
-                alert("Mohon pilih stasiun asal dan tujuan!");
+                alert("Pilih stasiun asal dan tujuan!");
                 return;
             }
             
@@ -257,7 +257,7 @@ int main() {
         }
     });
 
-    std::cout << "[INFO] Server aktif di http://localhost:3000" << std::endl;
+    std::cout << "Server aktif di http://localhost:3000" << std::endl;
     svr.listen("0.0.0.0", 3000);
     return 0;
 }
