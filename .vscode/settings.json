@@ -1,5 +1,0 @@
-{
-    "c-cpp-compile-run.mirror-output-location": true,
-    "c-cpp-compile-run.output-location": "build",
-    "c-cpp-compile-run.skip-if-compiled": true
-}
