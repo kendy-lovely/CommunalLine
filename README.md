@@ -1,7 +1,12 @@
 # CommunalLine - A KRL Backend Written in C++
 
 ## Use
-The reference is stored in our docs
+```
+cd CommunalLine
+./build/bin/server
+./build/bin/client
+# then run localhost:3000 on your browser
+```
 
 ## Build
 
