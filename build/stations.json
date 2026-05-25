@@ -9,9 +9,6 @@
     "name": "ANGKE",
     "transit": false
   },
-  "BBN": {
-    "name": "BRAMBANAN"
-  },
   "BJD": {
     "line": "BOGOR",
     "name": "BOJONGGEDE",
@@ -27,19 +24,9 @@
     "name": "BEKASI TIMUR",
     "transit": false
   },
-  "BOI": {
-    "line": "TANGERANG",
-    "name": "BOJONG INDAH",
-    "transit": false
-  },
   "BOO": {
     "line": "BOGOR",
     "name": "BOGOR",
-    "transit": false
-  },
-  "BPR": {
-    "line": "TANGERANG",
-    "name": "BATU CEPER",
     "transit": false
   },
   "BUA": {
@@ -57,9 +44,6 @@
     "name": "CICAYUR",
     "transit": false
   },
-  "CE": {
-    "name": "CEPER"
-  },
   "CIT": {
     "line": "CIKARANG",
     "name": "CIBITUNG",
@@ -75,21 +59,10 @@
     "name": "CIKINI",
     "transit": false
   },
-  "CKL": {
-    "name": "CIKEUSAL"
-  },
   "CKR": {
     "line": "CIKARANG",
     "name": "CIKARANG",
     "transit": false
-  },
-  "CKY": {
-    "line": "RANGKASBITUNG",
-    "name": "CIKOYA",
-    "transit": false
-  },
-  "CLG": {
-    "name": "CILEGON"
   },
   "CLT": {
     "line": "BOGOR",
@@ -101,17 +74,9 @@
     "name": "CISAUK",
     "transit": false
   },
-  "CT": {
-    "name": "CATANG"
-  },
   "CTA": {
     "line": "BOGOR",
     "name": "CITAYAM",
-    "transit": false
-  },
-  "CTR": {
-    "line": "RANGKASBITUNG",
-    "name": "CITERAS",
     "transit": false
   },
   "CUK": {
@@ -128,9 +93,6 @@
     "line": "RANGKASBITUNG",
     "name": "DARU",
     "transit": false
-  },
-  "DL": {
-    "name": "DELANGGU"
   },
   "DP": {
     "line": "BOGOR",
@@ -160,26 +122,10 @@
     "name": "GONDANGDIA",
     "transit": false
   },
-  "GGL": {
-    "name": "GROGOL"
-  },
-  "GRG": {
-    "line": "TANGERANG",
-    "name": "GROGOL",
-    "transit": false
-  },
-  "GST": {
-    "line": "CIKARANG",
-    "name": "GANG SENTIONG",
-    "transit": false
-  },
-  "GW": {
-    "name": "GAWOK"
-  },
   "JAKK": {
     "lines": [
-      "BOGOR",
-      "TANJUNGPRIUK"
+      "TANJUNGPRIUK",
+      "BOGOR"
     ],
     "name": "JAKARTA KOTA",
     "transit": true
@@ -189,16 +135,10 @@
     "name": "JAYAKARTA",
     "transit": false
   },
-  "JBU": {
-    "name": "JAMBU BARU"
-  },
   "JMU": {
     "line": "RANGKASBITUNG",
     "name": "JURANG MANGU",
     "transit": false
-  },
-  "JN": {
-    "name": "JENAR"
   },
   "JNG": {
     "line": "CIKARANG",
@@ -225,14 +165,6 @@
     "name": "KEBAYORAN",
     "transit": false
   },
-  "KDS": {
-    "line": "TANGERANG",
-    "name": "KALIDERES",
-    "transit": false
-  },
-  "KEN": {
-    "name": "KRENCENG"
-  },
   "KLD": {
     "line": "CIKARANG",
     "name": "KLENDER",
@@ -243,16 +175,6 @@
     "name": "KLENDER BARU",
     "transit": false
   },
-  "KMO": {
-    "line": "CIKARANG",
-    "name": "KEMAYORAN",
-    "transit": false
-  },
-  "KMT": {
-    "line": "CIKARANG",
-    "name": "KRAMAT",
-    "transit": false
-  },
   "KPB": {
     "lines": [
       "CIKARANG",
@@ -261,42 +183,19 @@
     "name": "KAMPUNG BANDAN",
     "transit": true
   },
-  "KRA": {
-    "name": "KARANGANTU"
-  },
   "KRI": {
     "line": "CIKARANG",
     "name": "KRANJI",
     "transit": false
-  },
-  "KT": {
-    "name": "KLATEN"
-  },
-  "KTA": {
-    "name": "KUTOARJO"
   },
   "LNA": {
     "line": "BOGOR",
     "name": "LENTENG AGUNG",
     "transit": false
   },
-  "LPN": {
-    "name": "LEMPUYANGAN"
-  },
-  "MER": {
-    "name": "MERAK"
-  },
   "MGB": {
     "line": "BOGOR",
     "name": "MANGGA BESAR",
-    "transit": false
-  },
-  "MGW": {
-    "name": "MAGUWO"
-  },
-  "MJ": {
-    "line": "RANGKASBITUNG",
-    "name": "MAJA",
     "transit": false
   },
   "MRI": {
@@ -327,14 +226,6 @@
     "name": "PONDOK RAJEG",
     "transit": false
   },
-  "PI": {
-    "line": "TANGERANG",
-    "name": "PORIS",
-    "transit": false
-  },
-  "PL": {
-    "name": "PALUR"
-  },
   "PLM": {
     "line": "RANGKASBITUNG",
     "name": "PALMERAH",
@@ -345,24 +236,9 @@
     "name": "PONDOK CINA",
     "transit": false
   },
-  "POK": {
-    "line": "CIKARANG",
-    "name": "PONDOK JATI",
-    "transit": false
-  },
   "PRP": {
     "line": "RANGKASBITUNG",
     "name": "PARUNG PANJANG",
-    "transit": false
-  },
-  "PSE": {
-    "line": "CIKARANG",
-    "name": "PASAR SENEN",
-    "transit": false
-  },
-  "PSG": {
-    "line": "TANGERANG",
-    "name": "PESING",
     "transit": false
   },
   "PSM": {
@@ -375,39 +251,15 @@
     "name": "PASAR MINGGU BARU",
     "transit": false
   },
-  "PWS": {
-    "name": "PURWOSARI"
-  },
-  "RJW": {
-    "line": "CIKARANG",
-    "name": "RAJAWALI",
-    "transit": false
-  },
-  "RK": {
-    "line": "RANGKASBITUNG",
-    "name": "RANGKASBITUNG",
-    "transit": false
-  },
   "RU": {
     "line": "RANGKASBITUNG",
     "name": "RAWA BUNTU",
-    "transit": false
-  },
-  "RW": {
-    "line": "TANGERANG",
-    "name": "RAWA BUAYA",
     "transit": false
   },
   "SDM": {
     "line": "RANGKASBITUNG",
     "name": "SUDIMARA",
     "transit": false
-  },
-  "SK": {
-    "name": "SOLO JEBRES"
-  },
-  "SLO": {
-    "name": "SOLO BALAPAN"
   },
   "SRP": {
     "line": "RANGKASBITUNG",
@@ -432,9 +284,6 @@
     "name": "SAWAH BESAR",
     "transit": false
   },
-  "SWT": {
-    "name": "SROWOT"
-  },
   "TB": {
     "line": "CIKARANG",
     "name": "TAMBUN",
@@ -457,39 +306,21 @@
   },
   "THB": {
     "lines": [
-      "CIKARANG",
-      "RANGKASBITUNG"
+      "RANGKASBITUNG",
+      "CIKARANG"
     ],
     "name": "TANAH ABANG",
     "transit": true
-  },
-  "THI": {
-    "line": "TANGERANG",
-    "name": "TANAH TINGGI",
-    "transit": false
-  },
-  "TKO": {
-    "line": "TANGERANG",
-    "name": "TAMAN KOTA",
-    "transit": false
   },
   "TLM": {
     "line": "CIKARANG",
     "name": "METLAND TELAGAMURNI",
     "transit": false
   },
-  "TNG": {
-    "line": "TANGERANG",
-    "name": "TANGERANG",
-    "transit": false
-  },
   "TNT": {
     "line": "BOGOR",
     "name": "TANJUNG BARAT",
     "transit": false
-  },
-  "TOJB": {
-    "name": "TONJONG BARU"
   },
   "TPK": {
     "line": "TANJUNGPRIUK",
@@ -505,17 +336,5 @@
     "line": "BOGOR",
     "name": "UNIV. PANCASILA",
     "transit": false
-  },
-  "WJ": {
-    "name": "WOJO"
-  },
-  "WLT": {
-    "name": "WALANTAKA"
-  },
-  "WT": {
-    "name": "WATES"
-  },
-  "YK": {
-    "name": "YOGYAKARTA"
   }
 }
