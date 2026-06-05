@@ -122,6 +122,11 @@
     "name": "GONDANGDIA",
     "transit": false
   },
+  "GST": {
+    "line": "CIKARANG",
+    "name": "GANG SENTIONG",
+    "transit": false
+  },
   "JAKK": {
     "lines": [
       "TANJUNGPRIUK",
@@ -173,6 +178,16 @@
   "KLDB": {
     "line": "CIKARANG",
     "name": "KLENDER BARU",
+    "transit": false
+  },
+  "KMO": {
+    "line": "CIKARANG",
+    "name": "KEMAYORAN",
+    "transit": false
+  },
+  "KMT": {
+    "line": "CIKARANG",
+    "name": "KRAMAT",
     "transit": false
   },
   "KPB": {
@@ -236,9 +251,19 @@
     "name": "PONDOK CINA",
     "transit": false
   },
+  "POK": {
+    "line": "CIKARANG",
+    "name": "PONDOK JATI",
+    "transit": false
+  },
   "PRP": {
     "line": "RANGKASBITUNG",
     "name": "PARUNG PANJANG",
+    "transit": false
+  },
+  "PSE": {
+    "line": "CIKARANG",
+    "name": "PASAR SENEN",
     "transit": false
   },
   "PSM": {
@@ -249,6 +274,11 @@
   "PSMB": {
     "line": "BOGOR",
     "name": "PASAR MINGGU BARU",
+    "transit": false
+  },
+  "RJW": {
+    "line": "CIKARANG",
+    "name": "RAJAWALI",
     "transit": false
   },
   "RU": {

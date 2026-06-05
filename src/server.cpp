@@ -1,4 +1,3 @@
-#define API_TOKEN "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiYmE0Yzc4MzE4ODNjYTI0N2YzMTBkMTJhYzc3ZjE5ZTdjMTVkNjgxOTk2ODM0MDc0MGM3MzliYmRjNGQ3YTI5MzczYzMyNWM2NDFiZjgxYzciLCJpYXQiOjE3NTQ0NTkxMjYsIm5iZiI6MTc1NDQ1OTEyNiwiZXhwIjoxNzg1OTk1MTI2LCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.zPA0IDAN3NycMKa6DaOdRmkcFz1oUTX1dkxEp3MLBlhibTQI0L0WB9mY-pUlQW5vQj8ktOdo-rRvrjxiXaHFqLQM6ebONbqTg8V0AjBXwrkBjLZDCE4dop9iZyDXcG2b9XTLCgPgpOBbduW_Dy0-bIkJOOIgIzl9mEEUVQf3T6G_zA796SGJ6rtLqfBK-sMnhOV4eZSqQIXIrxPyCJ8SA893p-29PFxfQfcbXW_6cYBFhDzyiilhJ6xQd6znN2eWOL4MPAxYeS2ZGnaZ7ijUN91MAyPnV0dQU7loVtS1jt2HlM5oMSsE2Zoz6FP31GvG6f7o_MWogEp0ZMOus50bVly3II8Rjjc4IGgswbw0h-RS0Ipo3f2QmXp4GfhRNUoTyqq-7oiCIDPUJcdg39lSIy9Fz7-ECNfbjEiH60V3GyftuiFGrayMoE7XeWaC9wQZo3fLHhI1aPgbXXsP-rqWLFf2km4zdG5Y5CYpUNb_Z11VOU6aaFCdRtoC6e7VcxHxLwCBT22wluNpbfFtEQSYDQE1JlegijvFmnRHTM88n-zp7sWhuCWVX6oE0ULdy51SR4iOqpYOA4B1ZymmYrQz1kBxSA_52lnTBlU9gfWkUiFX8GLSh7wQ8a4dVMYoJj6t1VCJt9-d30jn4S3tXsim_3wpp71RE9SSazV35j8o7do"
 #define CPPHTTPLIB_OPENSSL_SUPPORT
 
 #include <iostream>
@@ -76,10 +75,7 @@ namespace KRL {
     class Website {
         private:
             Client cli;
-            Headers headers;
-            Website() : 
-                cli("https://api-partner.krl.co.id"), 
-                headers({{ "Authorization", API_TOKEN }}) {}
+            Website() : cli("https://kci.id") {}
         public:
             static Website &instantiate() {
                 static Website inst;
@@ -87,7 +83,7 @@ namespace KRL {
             }
 
             Result callApi(string path) {
-                return cli.Get("/krl-webs/v1" + path, headers);
+                return cli.Get("/api/krl" + path);
             }
 
             ~Website() { cli.stop(); }
@@ -349,7 +345,7 @@ class Station : public Saveable {
                 } 
             }
 
-            if (auto res = api.callApi("/krl-station")) {
+            if (auto res = api.callApi("/stations")) {
                 if (res->status != 200) {
                     cerr << "Error " << res->status << ":\n" << res->body << endl; 
                     return;
@@ -547,7 +543,7 @@ TransitStation* Station::isTransitStation() {
 }
 
 vector<pair<unique_ptr<Station>, int>> Train::getStops(bool onlyTransit) {
-    if (auto res = api.callApi("/schedules-train?trainid="+id)) {
+    if (auto res = api.callApi("/train-schedule?trainid="+id)) {
         if (res->status != 200) { 
             cerr << "Error " << res->status << " in Train::getStops():\n" << res->body << endl; 
             return {};
